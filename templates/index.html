@@ -59,11 +59,20 @@
             </div>
             <div class="col-sm-4">
                <div class="togle_3">
+                  {% if user.is_authenticated %}
                   <div class="left_main">
                      <div class="menu_main">
-                        <a href="#"><i class="fa fa-fw fa-user"></i> Login</a>
+                        <a href="{% url 'logout' %}"> Log out</a>
                      </div>
                   </div>
+                  {% else %}
+                  <div class="left_main">
+                     <div class="menu_main">
+                        <a href="{% url 'register' %}">Register</a> &ensp;|&ensp;
+                        <a href="{% url 'login' %}">Log In</a>
+                     </div>
+                  </div>
+                  {% endif %}
                   <div class="middle_main">
                      <div class="shoping_bag"><img src="{% static 'images/shopping-bag.png' %}"></div>
                   </div>
@@ -158,7 +167,7 @@
             <p class="about_lorem">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it </p>
          </div>
          <div class="red_bt">
-            <button class="read_more">Read More</button>
+            <button class="read_more"> <a href="{% url 'gallery' %}">Details</a></button>
          </div>
       </div>
    </div>
@@ -198,7 +207,9 @@
                </a>
             </div>
           </div>
-          <button class="seemore_bt">See More</button>
+          <div class="red_bt">
+            <button class="read_more"> <a href="{% url 'gallery' %}">Details</a></button>
+         </div>
       </div>
    </div>
    <div class="contact_section layout_padding">
@@ -211,12 +222,7 @@
                     <div class="input_main">
                        <div class="container">
                           <form action="/action_page.php">
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Name" name="Name">
-                            </div>
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Email" name="Name">
-                            </div>
+
                             <div class="form-group">
                               <input type="text" class="email-bt" placeholder="Phone Numbar" name="Email">
                             </div>
@@ -236,18 +242,18 @@
    </div>
    <!-- our section end -->
    <!-- Testimonial section start -->
-   <div class="testimonial_section layout_padding">
-      <div class="container">
-         <h1 class="contact_text"><strong>Testimonial</strong></h1>
-         <p class="dolore_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  </p>
-         <div class="images_3"><img src="{% static 'images/img-3.png' %}"></div>
-         <h2 class="rooty_text">Rooty</h2>
-         <p class="ice_text">(lcc)</p>
-         <div><img src="{% static 'images/left-quote.png' %}"></div>
-         <p class="dolore_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore  , quis nostrud exercitation </p>
-         <div class="right_quote"><img src="{% static 'images/right-quote.png' %}"></div>
-      </div> 
-   </div>
+{#   <div class="testimonial_section layout_padding">#}
+{#      <div class="container">#}
+{#         <h1 class="contact_text"><strong>Testimonial</strong></h1>#}
+{#         <p class="dolore_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna  </p>#}
+{#         <div class="images_3"><img src="{% static 'images/img-3.png' %}"></div>#}
+{#         <h2 class="rooty_text">Rooty</h2>#}
+{#         <p class="ice_text">(lcc)</p>#}
+{#         <div><img src="{% static 'images/left-quote.png' %}"></div>#}
+{#         <p class="dolore_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore  , quis nostrud exercitation </p>#}
+{#         <div class="right_quote"><img src="{% static 'images/right-quote.png' %}"></div>#}
+{#      </div>#}
+{#   </div>#}
 
    <!-- Testimonial section end -->
    <!-- footer section start -->
@@ -288,7 +294,7 @@
                   </div>
                </div>
             </div>
-         </div>   
+         </div>
       </div>
    </div>
    <!-- footer section start -->

@@ -7,4 +7,6 @@ urlpatterns = [
     path('contact/', contact_view, name='contact'),
     path('gallery/', gallery_view, name='gallery'),
     path('testimonial/', testimonial_view, name='testimonial'),
+    path('register/', registerPage, name='register'),
+    path('login/', loginPage, name='login')
 ]
