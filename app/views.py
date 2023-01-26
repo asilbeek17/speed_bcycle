@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.views.generic import ListView, DetailView
+
 from app.form import CreateUserForm
+from app.models import Product
 
+# def index_view(request):
+#     return render(request, 'index.html')
 
-def index_view(request):
-    return render(request, 'index.html')
+class IndexVIew(ListView):
+    model = Product
+    template_name = 'index.html'
 
 def about_view(request):
     return render(request, 'about.html')
@@ -13,8 +19,12 @@ def about_view(request):
 def contact_view(request):
     return render(request, 'contact.html')
 
-def gallery_view(request):
-    return render(request, 'gallery.html')
+# def gallery_view(request):
+#     return render(request, 'details.html')
+
+class DetailView(DetailView):
+    model = Product
+    template_name = 'details.html'
 
 def testimonial_view(request):
     return render(request, 'testimonial.html')
