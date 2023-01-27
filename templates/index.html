@@ -163,9 +163,20 @@
    <div class="about_section">
       <div class="container">
          <div class="about_img"><img src="{{ product.image.url }}" style="max-width: 100%;"></div>
-         <h2 class="about_text"><strong><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a> <span style="color: #000;"></span></strong></h2>
-         <div class="about_middle">
-            <p class="about_lorem">{{ product.text }}</p>
+         <h2 class="about_text"><strong><a href="{% url 'product_detail' product.pk %}">Product</a> <span style="color: royalblue;"><a href="{% url 'product_detail' product.pk %}">details</a></span></strong></h2>
+          <div class="about_middle">
+              <p class="about_section" style="color: black">
+                  Name: {{ product.title }}
+                  <br>
+                  Price: {{ product.price }}
+                  <br>
+                  Category: {{ product.category }}
+                  <br>
+                  Quantitiy: {{ product.quantitiy }}
+                  <br>
+                  Description:  {{ product.text }}
+              </p>
+
          </div>
          <div class="red_bt">
 {#            <button class="read_more">Details</button>#}
@@ -177,37 +188,37 @@
 {% endblock content %}
 
    <!-- about section end -->
-   <!-- our section start -->
-   <div class="contact_section layout_padding">
-      <div class="container">
-         <h1 class="contact_text"><strong>Contact Us</strong></h1>
-      </div>
-            <div class="contact_main">
-               <div class="enput_section">
-                  <div class="email_box">
-                    <div class="input_main">
-                       <div class="container">
-                          <form action="/action_page.php">
+{#   <!-- our section start -->#}
+{#   <div class="contact_section layout_padding">#}
+{#      <div class="container">#}
+{#         <h1 class="contact_text"><strong>Contact Us</strong></h1>#}
+{#      </div>#}
+{#            <div class="contact_main">#}
+{#               <div class="enput_section">#}
+{#                  <div class="email_box">#}
+{#                    <div class="input_main">#}
+{#                       <div class="container">#}
+{#                          <form action="/action_page.php">#}
+{##}
+{#                            <div class="form-group">#}
+{#                              <input type="text" class="email-bt" placeholder="Phone Numbar" name="Email">#}
+{#                            </div>#}
+{#                            #}
+{#                            <div class="form-group">#}
+{#                                <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>#}
+{#                            </div>#}
+{#                          </form>   #}
+{#                       </div> #}
+{#                       <div class="send_btn">#}
+{#                        <button type="button" class="main_bt"><a href="#">Send</a></button>#}
+{#                       </div>                   #}
+{#                    </div>#}
+{#                 </div>#}
+{#               </div>#}
+{#            </div>#}
+{#   </div>#}
 
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Phone Numbar" name="Email">
-                            </div>
-                            
-                            <div class="form-group">
-                                <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
-                            </div>
-                          </form>   
-                       </div> 
-                       <div class="send_btn">
-                        <button type="button" class="main_bt"><a href="#">Send</a></button>
-                       </div>                   
-                    </div>
-                 </div>
-               </div>
-            </div>
-   </div>
-
-   <!-- our section end -->
+{#   <!-- our section end -->#}
    <!-- Testimonial section start -->
 {#   <div class="testimonial_section layout_padding">#}
 {#      <div class="container">#}

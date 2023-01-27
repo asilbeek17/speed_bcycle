@@ -81,14 +81,25 @@
    <div class="about_section">
       <div class="container">
          <div class="about_img"><img src="{{ product.image.url }}" style="max-width: 100%;"></div>
-         <h2 class="about_text"><strong>{{ product.name }}<span style="color: #000;">bicycle</span></strong></h2>
-         <div class="about_middle">
-            <p class="about_lorem">{{ product.text }}</p>
+         <h2 class="about_text"><strong>{{ product.title }}<span style="color: royalblue;"></span></strong></h2>
+          <div class="about_middle">
+              <p class="about_section" style="color: black">
+                  Name: {{ product.title }}
+                  <br>
+                  Price: {{ product.price }}
+                  <br>
+                  Category: {{ product.category }}
+                  <br>
+                  Quantitiy: {{ product.quantitiy }}
+                  <br>
+                  Description:  {{ product.text }}
+              </p>
+
          </div>
-      </div>
-       <div style="text-indent: 550px">
-          <button class="btn btn-primary"><a href="#" style="color: #ffffff">Update</a></button>
-          <button class="btn btn-primary"><a href="#" style="color: #ffffff">Delete</a></button>
+         <div class="red_bt">
+            <button class="btn btn-primary"><a href="{% url 'update' product.pk %}">Update</a></button>
+             <button class="btn btn-primary"><a href="{% url 'delete' product.pk %}">Delete</a></button>
+         </div>
       </div>
    </div>
    </div>

@@ -1,8 +1,8 @@
+from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
-
-from app.models import Product
+from app.models import *
 
 
 class CreateUserForm(UserCreationForm):
@@ -17,3 +17,12 @@ class ProductModelForm(ModelForm):
         model = Product
         fields = '__all__'
         exclude = ()
+
+
+class ContactForm(ModelForm):
+
+    class Meta:
+        model = Contact
+        fields = '__all__'
+        exclude = ()
+

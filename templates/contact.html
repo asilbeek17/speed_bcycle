@@ -69,45 +69,44 @@
                      <div class="shoping_bag"><img src="{% static 'images/shopping-bag.png' %}"></div>
                   </div>
                   <div class="right_main">
-                     <div class="togle_main"><a class="class="openbtn" onclick="openNav()"><img src="{% static 'images/togle-menu-icon.png' %}" style="max-width: 100%;"></a></div>
+                     <div class="togle_main"><a class=class="openbtn" onclick="openNav()"><img src="{% static 'images/togle-menu-icon.png' %}" style="max-width: 100%;"></a></div>
                   </div>
                </div>
             </div>
          </div>
      </div>
 
+
    <div class="contact_section layout_padding">
       <div class="container">
          <h1 class="contact_text"><strong>Contact Us</strong></h1>
       </div>
-
-       {% block content %}
-
             <div class="contact_main">
                <div class="enput_section">
                   <div class="email_box">
                     <div class="input_main">
                        <div class="container">
-                          <form action="/action_page.php">
+                          <form action="{% url 'contact' %}" method="post">
+                              {% csrf_token %}
                             <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Phone Numbar" name="Email">
+                              <input type="text" class="email-bt" placeholder="Email" name="Email">
                             </div>
-                            
+                            <div class="form-group">
+                              <input type="text" class="email-bt" placeholder="Phone Numbar" name="phone">
+                            </div>
                             <div class="form-group">
                                 <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
                             </div>
-                          </form>   
-                       </div> 
-                       <div class="send_btn">
-                        <button type="button" class="main_bt"><a href="#">Send</a></button>
-                       </div>                   
+                           <div class="send_btn">
+                            <button type="submit" class="main_bt">Send</button>
+                           </div>
+                        </form>
+                       </div>
                     </div>
                  </div>
                </div>
             </div>
    </div>
-
-    {% endblock content %}
 
    <!-- footer section start -->
    <div class="footer_section layout_padding">
