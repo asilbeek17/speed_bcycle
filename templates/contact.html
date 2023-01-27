@@ -80,18 +80,15 @@
       <div class="container">
          <h1 class="contact_text"><strong>Contact Us</strong></h1>
       </div>
+
+       {% block content %}
+
             <div class="contact_main">
                <div class="enput_section">
                   <div class="email_box">
                     <div class="input_main">
                        <div class="container">
                           <form action="/action_page.php">
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Name" name="Name">
-                            </div>
-                            <div class="form-group">
-                              <input type="text" class="email-bt" placeholder="Email" name="Name">
-                            </div>
                             <div class="form-group">
                               <input type="text" class="email-bt" placeholder="Phone Numbar" name="Email">
                             </div>
@@ -110,6 +107,7 @@
             </div>
    </div>
 
+    {% endblock content %}
 
    <!-- footer section start -->
    <div class="footer_section layout_padding">
