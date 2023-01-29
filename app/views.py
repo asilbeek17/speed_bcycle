@@ -1,10 +1,9 @@
-from django.forms.models import ModelFormMetaclass
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, FormView, UpdateView, DeleteView
-from django.views.generic.edit import BaseUpdateView
+from django.views.generic import ListView, DetailView, UpdateView, DeleteView, CreateView, FormView
 
 from app.form import *
 from app.form import ProductModelForm
@@ -15,15 +14,38 @@ from app.models import *
 #     return render(request, 'index.html')
 
 class IndexVIew(ListView):
+    Product.objects.order_by('price')
     model = Product
     template_name = 'index.html'
+    queryset = Product.objects.all()
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        title = self.request.GET.get('title')
+        if title:
+            return Product.objects.filter(title__icontains=title)
+        return Product.objects.all()
 
 
 def about_view(request):
     return render(request, 'about.html')
 
+
 def contact_view(request):
-    return render(request, 'contact.html')
+    form = ContactForm
+
+    if request.method == "POST":
+        phone = request.POST['phone']
+        message = request.POST['message']
+
+        context = {
+            'form': form
+        }
+        return render(request, 'contact.html', context)
+
+    else:
+        return render(request, 'contact.html')
+
 
 # def gallery_view(request):
 #     return render(request, 'details.html')
@@ -32,10 +54,6 @@ def contact_view(request):
 class DetailView(DetailView):
     model = Product
     template_name = 'details.html'
-
-
-def testimonial_view(request):
-    return render(request, 'testimonial.html')
 
 
 def registerPage(request):
@@ -72,43 +90,45 @@ def loginPage(request):
     return render(request, 'registration/login.html', context)
 
 
-class UpdateBlogView(UpdateView):
+class UpdateBlogView(LoginRequiredMixin, UserPassesTestMixin,  UpdateView):
     model = Product
-    fields = ('title', 'image', 'text', 'price', 'quantitiy', 'category')
+    fields = ('title', 'text', 'price', 'quantitiy', 'category', 'image', 'image2', 'image3')
     template_name = 'CRUD/update.html'
 
-# def update_product(request, product_pk):
-#     category = Category.objects.all()
-#     product = Product.objects.filter(id=product_pk).first()
-#     if request.method == 'POST':
-#         form = ProductModelForm(request.POST, request.FILES, instance=product)
-#         if form.is_valid():
-#             form.save()
-#         return redirect('index')
-#
-#     form = ProductModelForm(instance=product)
-#     context = {
-#         "form": form,
-#         'categories': category
-#     }
-#     return render(request, 'CRUD/update.html', context)
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user
 
 
-
-class DeleteBlogView(DeleteView):
+class DeleteBlogView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Product
     template_name = 'CRUD/delete.html'
     success_url = reverse_lazy('index')
 
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user
 
-# class ContactPage(FormView):
+
+class CreateBlogView(LoginRequiredMixin, CreateView):
+    model = Product
+    template_name = 'CRUD/create.html'
+    fields = ('title', 'text', 'price', 'quantitiy', 'category', 'image', 'image2', 'image3')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+# class ContactPage(LoginRequiredMixin, FormView):
 #     template_name = 'contact.html'
-#     success_url = reverse_lazy('index')
+#     success_url = reverse_lazy("index")
 #     form_class = ContactForm
-
-    # def form_valid(self, form):
-    #     form.save()
-    #     return super().form_valid(form)
+#
+#     def form_valid(self, form):
+#         form.instance.author = self.request.user
+#         form.save()
+#         return super().form_valid(form)
 
 
 

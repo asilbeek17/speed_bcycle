@@ -19,6 +19,8 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     date = models.DateField(auto_now_add=True)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    image2 = models.ImageField()
+    image3 = models.ImageField()
 
     def __str__(self):
         return self.title
@@ -28,7 +30,13 @@ class Product(models.Model):
 
 
 class Contact(models.Model):
-    email = models.EmailField()
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=13)
     message = models.TextField()
+
+    def __str__(self):
+        return self.phone_number
+
+    def get_absolute_url(self):
+        return reverse('index')
 

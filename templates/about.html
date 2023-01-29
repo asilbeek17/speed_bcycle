@@ -29,7 +29,7 @@
       <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
       <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-
+      <link rel="icon" type="image/x-icon" href="{% static 'images/icon.png' %}">
       
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -42,7 +42,7 @@
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
   <a href="{% url 'index' %}">Home</a>
   <a href="{% url 'about' %}">About</a>
-  <a href="{% url 'testimonial' %}">testimonial</a>
+  <a href="{% url 'create' %}">Create</a>
   <a href="{% url 'contact' %}">Contact</a>
 </div>
 
@@ -69,7 +69,7 @@
                      <div class="shoping_bag"><img src="{% static 'images/shopping-bag.png' %}"></div>
                   </div>
                   <div class="right_main">
-                      <div class="togle_main"><a class="openbtn" onclick="openNav()"><img src="{% static 'images/togle-menu-icon.png' %}" style="max-width: 100%;"></a></div>
+                      <div class="togle_main"><a class=class="openbtn" onclick="openNav()"><img src="{% static 'images/togle-menu-icon.png' %}" style="max-width: 100%;"></a></div>
                   </div>
                </div>
             </div>
@@ -102,7 +102,6 @@
                   <ul>
                       <li><a href="{% url 'index' %}">Home</a></li>
                       <li><a href="{% url 'about' %}">About</a></li>
-                      <li><a href="{% url 'testimonial' %}">testimonial</a></li>
                       <li><a href="{% url 'contact' %}">Contact</a></li>
                   </ul>
                </div>
