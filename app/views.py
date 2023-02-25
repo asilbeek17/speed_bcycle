@@ -118,6 +118,9 @@ class CreateBlogView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+    
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
 
 
 # class ContactPage(LoginRequiredMixin, FormView):
